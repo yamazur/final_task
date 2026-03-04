@@ -77,6 +77,8 @@ class MainPage(BasePage):
     def youtube_check_and_click(self):
         self.wait_for_element(Locators.YOUTUBE_BUTTON)
         self.wait_and_click(Locators.YOUTUBE_BUTTON)
+        new_window = self.browser.window_handles[1]
+        self.browser.switch_to.window(new_window)
         return self
 
     @allure.step('Проверка перехода на YouTube')

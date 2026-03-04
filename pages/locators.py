@@ -35,8 +35,8 @@ class Locators:
     USERNAME_INPUT = (By.ID, "username")
     PASSWORD_INPUT = (By.ID, "password")
     USERNAME_DESCRIPTION_INPUT = (By.ID, "formly_1_input_username_0")
-    LOGIN_BUTTON = (By.CSS_SELECTOR, ".btn btn-danger")
-    SUCCESS_MESSAGE = (By.CSS_SELECTOR, "p.ng-scope")
+    LOGIN_BUTTON = (By.CSS_SELECTOR, ".btn-danger")
+    SUCCESS_MESSAGE = (By.XPATH, "//p[text()=\"You're logged in!!\"]")
     LOGOUT_LINK = (By.XPATH, "//a[text()='Logout']")
 
     #тест-кейс 6

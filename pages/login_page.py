@@ -44,7 +44,7 @@ class LoginPage(BasePage):
 
         self.type_text(Locators.USERNAME_INPUT, fake.user_name())
         self.type_text(Locators.PASSWORD_INPUT, "password")
-        self.type_text(Locators.USERNAME_DESCRIPTION_INPUT, fake.sentence())
+        self.type_text(Locators.USERNAME_DESCRIPTION_INPUT, fake.user_name())
 
         return self
 
