@@ -12,18 +12,14 @@ class LoginPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser, self.URL)
 
-    @allure.step('Заполняем все поля валидно')
-    def fill_fields_with_valid_data(self):
+    @allure.step('Заполняем поля и нажимаем на кнопку Login')
+    def login(self, username, password, username_description):
+        self.type_text(Locators.USERNAME_INPUT, username)
+        self.type_text(Locators.PASSWORD_INPUT, password)
+        self.type_text(Locators.USERNAME_DESCRIPTION_INPUT, username_description)
 
-        self.type_text(Locators.USERNAME_INPUT, "angular")
-        self.type_text(Locators.PASSWORD_INPUT, "password")
-        self.type_text(Locators.USERNAME_DESCRIPTION_INPUT, "angular")
-
-        return self
-
-    @allure.step('Кликаем на кнопку Login')
-    def login_click(self):
         self.wait_and_click(Locators.LOGIN_BUTTON)
+
         return self
 
     @allure.step('Проверяем, что авторизация прошла успешно')
@@ -36,16 +32,6 @@ class LoginPage(BasePage):
     @allure.step('Выходим из аккаунта')
     def logout(self):
         self.wait_and_click(Locators.LOGOUT_LINK)
-        return self
-
-    @allure.step('Заполяем только два поля валидно')
-    def fill_fields_with_invalid_data(self):
-        fake = Faker()
-
-        self.type_text(Locators.USERNAME_INPUT, fake.user_name())
-        self.type_text(Locators.PASSWORD_INPUT, "password")
-        self.type_text(Locators.USERNAME_DESCRIPTION_INPUT, fake.user_name())
-
         return self
 
     @allure.step('Проверяем, что авторизация не прошла')

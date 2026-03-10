@@ -10,8 +10,7 @@ class TestLoginPositive:
     @allure.severity(Severity.CRITICAL)
     def test_login_positive(self, open_login_page):
         (open_login_page
-         .fill_fields_with_valid_data()
-         .login_click()
+         .login("angular", "password", "angular")
          .check_successful_login_message()
          .logout()
          )

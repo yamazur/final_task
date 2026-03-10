@@ -10,7 +10,6 @@ class TestLoginNegative:
     @allure.severity(Severity.NORMAL)
     def test_login_negative(self, open_login_page):
         (open_login_page
-         .fill_fields_with_invalid_data()
-         .login_click()
+         .login("angular", "wrong_password", "angular")
          .check_unsuccessful_login()
          )
