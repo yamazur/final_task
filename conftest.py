@@ -31,3 +31,24 @@ def open_login_page(browser):
     page = LoginPage(browser)
     page.open_page_and_checking_url()
     return page
+
+import pytest
+import allure
+
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item):
+    outcome = yield
+    rep = outcome.get_result()
+
+    if rep.when == "call" and rep.failed:
+        driver = item.funcargs.get("browser")
+
+        if driver:
+            screenshot = driver.get_screenshot_as_png()
+
+            allure.attach(
+                screenshot,
+                name=f"screenshot_{item.name}",
+                attachment_type=allure.attachment_type.PNG
+            )
