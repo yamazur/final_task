@@ -6,6 +6,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from config import DEFAULT_TIMEOUT
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
+import allure
+
+from pages.sql_login_page import SqlLoginPage
 
 
 @pytest.fixture
@@ -32,9 +35,11 @@ def open_login_page(browser):
     page.open_page_and_checking_url()
     return page
 
-import pytest
-import allure
-
+@pytest.fixture
+def open_sql_login_page(browser):
+    page = SqlLoginPage(browser)
+    page.open_page_and_checking_url()
+    return page
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item):
