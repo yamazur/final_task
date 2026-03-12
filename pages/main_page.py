@@ -89,3 +89,8 @@ class MainPage(BasePage):
         assert "youtube.com" in self.browser.current_url, \
             f"Не перешли на YouTube. Текущий URL: {self.browser.current_url}"
         return self
+
+    @allure.step('Переходим в раздел Member Login')
+    def go_to_member_login(self):
+        self.wait_and_click(Locators.MEMBER_LOGIN_BUTTON)
+        return self
