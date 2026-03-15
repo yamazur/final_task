@@ -1,4 +1,6 @@
 import allure
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from pages.base_page import BasePage
 from pages.locators import Locators
 
@@ -9,6 +11,10 @@ class MemberLoginPage(BasePage):
 
     def __init__(self, browser):
         super().__init__(browser, self.URL)
+
+        WebDriverWait(browser, 20).until(
+                EC.visibility_of_element_located(Locators.EMAIL_INPUT)
+            )
 
     @allure.step('Кликаем в поле ввода')
     def click_email_input(self):
