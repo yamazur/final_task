@@ -1,21 +1,25 @@
 import pytest
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from config import DEFAULT_TIMEOUT
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 import allure
-
+from selenium.webdriver.chrome.options import Options
 from pages.sql_login_page import SqlLoginPage
 
+GRID_URL = "http://192.168.31.101:4444"
 
 @pytest.fixture
 def browser():
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service)
-    driver.maximize_window()
+    options = Options()
+    options.add_argument("--window-size=1920,1080")
+
+    driver = webdriver.Remote(
+        command_executor=GRID_URL,
+        options=options
+    )
+
     yield driver
     driver.quit()
 

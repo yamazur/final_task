@@ -39,5 +39,3 @@ class Locators:
 
     MEMBER_LOGIN_BUTTON = (By.ID, "menu-item-27625")
     EMAIL_INPUT = (By.ID, "email")
-
-
