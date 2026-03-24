@@ -9,4 +9,4 @@ class TestMainPageNavigation:
     @allure.story("Resources → Practice Site 1")
     @allure.severity(Severity.NORMAL)
     def test_main_page_navigation(self, open_main_page):
-        open_main_page.resources_click().practice_site1_click().check_url()
+        open_main_page.close_banner_if_exists().resources_click().practice_site1_click().check_url()

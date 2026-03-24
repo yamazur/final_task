@@ -62,6 +62,11 @@ class BasePage:
         self.browser.execute_script("window.scrollTo(0, document.documentElement.scrollHeight);")
         return self
 
+    @allure.step('Скролл в начало страницы')
+    def scroll_to_top(self):
+        self.browser.execute_script("window.scrollTo(0, 0);")
+        return self
+
     @allure.step('Проверяем, что URL поменялся')
     def check_url(self):
         assert self.browser.current_url != self.url, \
