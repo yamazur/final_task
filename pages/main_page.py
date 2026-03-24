@@ -49,9 +49,9 @@ class MainPage(BasePage):
     @allure.step('Закрыть баннер если он появился')
     def close_banner_if_exists(self):
         try:
-            if self.is_element_present(Locators.BANNER, DEFAULT_TIMEOUT):
-                self.wait_and_click(Locators.BANNER_CLOSE_BUTTON, DEFAULT_TIMEOUT)
-                self.is_not_element_present(Locators.BANNER, DEFAULT_TIMEOUT)
+            if self.is_element_present(Locators.BANNER):  # используем timeout по умолчанию
+                self.wait_and_click(Locators.BANNER_CLOSE_BUTTON)
+                self.is_not_element_present(Locators.BANNER)  # используем timeout по умолчанию
         except TimeoutException:
             pass
 
