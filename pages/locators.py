@@ -32,3 +32,10 @@ class Locators:
     LOGOUT_LINK = (By.XPATH, "//a[text()='Logout']")
 
     ERROR_MESSAGE = (By.CSS_SELECTOR, "div.alert.alert-danger")
+
+    SQL_LOGIN = (By.NAME, "login")
+    SQL_PASSWORD = (By.NAME, "psw")
+    SQL_ENTER_BUTTON = (By.NAME, "subm1")
+
+    MEMBER_LOGIN_BUTTON = (By.ID, "menu-item-27625")
+    EMAIL_INPUT = (By.ID, "email")

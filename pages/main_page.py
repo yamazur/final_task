@@ -8,6 +8,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from config import DEFAULT_TIMEOUT
 from pages.base_page import BasePage
 from pages.locators import Locators
+from pages.member_login_page import MemberLoginPage
 
 
 class MainPage(BasePage):
@@ -89,3 +90,8 @@ class MainPage(BasePage):
         assert "youtube.com" in self.browser.current_url, \
             f"Не перешли на YouTube. Текущий URL: {self.browser.current_url}"
         return self
+
+    @allure.step('Переходим в раздел Member Login')
+    def go_to_member_login(self):
+        self.wait_and_click(Locators.MEMBER_LOGIN_BUTTON)
+        return MemberLoginPage(self.browser)
