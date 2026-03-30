@@ -8,7 +8,9 @@ import allure
 from selenium.webdriver.chrome.options import Options
 from pages.sql_login_page import SqlLoginPage
 
-GRID_URL = "http://192.168.31.101:4444"
+import os
+
+GRID_URL = os.getenv("GRID_URL", "http://localhost:4444")
 
 @pytest.fixture
 def browser():
