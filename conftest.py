@@ -7,19 +7,26 @@ from pages.main_page import MainPage
 import allure
 from selenium.webdriver.chrome.options import Options
 from pages.sql_login_page import SqlLoginPage
+from driver_factory import DriverFactory
+
 
 import os
 
 GRID_URL = os.getenv("GRID_URL", "http://localhost:4444")
 
-@pytest.fixture
-def browser():
-    options = Options()
-    options.add_argument("--window-size=1920,1080")
+def pytest_addoption(parser):
+    parser.addoption("--browser", action="store", default="chrome")
+    parser.addoption("--remote", action="store_true")
 
-    driver = webdriver.Remote(
-        command_executor=GRID_URL,
-        options=options
+@pytest.fixture
+def browser(request):
+    browser_name = request.config.getoption("--browser")
+    is_remote = request.config.getoption("--remote")
+
+    driver = DriverFactory.create_driver(
+        browser_name=browser_name,
+        is_remote=is_remote,
+        grid_url=GRID_URL if is_remote else None
     )
 
     yield driver
