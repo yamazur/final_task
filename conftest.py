@@ -70,3 +70,7 @@ def pytest_runtest_makereport(item):
                 name=f"screenshot_{item.name}",
                 attachment_type=allure.attachment_type.PNG
             )
+
+@pytest.fixture(autouse=True)
+def clean_browser(browser):
+    browser.delete_all_cookies()

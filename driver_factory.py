@@ -38,12 +38,15 @@ class DriverFactory:
 
         elif browser_name == "safari":
             if is_remote:
-                return webdriver.Remote(
+                driver = webdriver.Remote(
                     command_executor=grid_url,
                     options=SafariOptions()
                 )
             else:
-                return webdriver.Safari()
+                driver = webdriver.Safari()
+
+            driver.set_window_size(1920, 1080)
+            return driver
 
         else:
             raise ValueError(f"Unsupported browser: {browser_name}")
