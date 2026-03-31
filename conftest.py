@@ -71,6 +71,6 @@ def pytest_runtest_makereport(item):
                 attachment_type=allure.attachment_type.PNG
             )
 
-@pytest.fixture(autouse=True)
-def clean_browser(browser):
-    browser.delete_all_cookies()
+# @pytest.fixture(autouse=True)
+# def clean_browser(browser):
+#     browser.delete_all_cookies()

@@ -46,6 +46,7 @@ class DriverFactory:
                 driver = webdriver.Safari()
 
             driver.set_window_size(1920, 1080)
+            driver.maximize_window()
             return driver
 
         else:
