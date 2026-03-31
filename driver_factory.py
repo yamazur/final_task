@@ -9,9 +9,9 @@ class DriverFactory:
         elif browser_name == "firefox":
             return webdriver.Firefox()
 
-        # elif browser_name == "edge":
-        #     return webdriver.Edge()
-        #
+        elif browser_name == "safari":
+            return webdriver.Safari()
+
         # elif browser_name == "ie":
         #     from selenium.webdriver.ie.options import Options
         #     options = Options()
