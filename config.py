@@ -3,6 +3,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DEFAULT_TIMEOUT = 10
+DEFAULT_TIMEOUT = 15
 SQL_LOGIN = os.getenv("SQL_LOGIN")
 SQL_PASSWORD = os.getenv("SQL_PASSWORD")
