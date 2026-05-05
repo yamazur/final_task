@@ -5,7 +5,6 @@ from config import DEFAULT_TIMEOUT
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 import allure
-from selenium.webdriver.chrome.options import Options
 from pages.sql_login_page import SqlLoginPage
 from driver_factory import DriverFactory
 
