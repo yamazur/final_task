@@ -1,4 +1,4 @@
-from selenium.common import TimeoutException
+from selenium.common import TimeoutException, NoAlertPresentException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from config import DEFAULT_TIMEOUT
@@ -80,3 +80,12 @@ class BasePage:
             element.clear()
         element.send_keys(text)
         return self
+
+    @allure.step('Обновление страницы и закрытие алерта после обновления')
+    def refresh(self):
+        self.browser.refresh()
+        try:
+            alert = self.browser.switch_to.alert
+            alert.accept()
+        except NoAlertPresentException:
+            pass
