@@ -4,12 +4,15 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 class DroppablePage(BasePage):
 
-    URL = "http://way2automation.com/way2auto_jquery/droppable.php"
+    URL = "https://way2automation.com/way2auto_jquery/droppable.php"
 
     def __init__(self, browser):
         super().__init__(browser, self.URL)
 
-    def drag_and_drop_element(self):
+    def drag_n_drop_element_and_text_comparison(self):
+
+        self.switch_to_iframe()
+
         draggable = self.wait_for_element(Locators.DRAGGABLE)
         droppable = self.wait_for_element(Locators.DROPPABLE)
 

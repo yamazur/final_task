@@ -9,4 +9,4 @@ class TestDroppablePageDragAndDrop:
     @allure.story("Drag and drop an element with text change")
     @allure.severity(Severity.MINOR)
     def test_droppable_page_drag_and_drop(self, browser, open_droppable_page):
-        open_droppable_page.drag_and_drop_element()
+        open_droppable_page.drag_n_drop_element_and_text_comparison()

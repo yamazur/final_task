@@ -42,3 +42,5 @@ class Locators:
 
     DRAGGABLE = (By.ID, "draggable")
     DROPPABLE = (By.ID, "droppable")
+
+    IFRAME = (By.CLASS_NAME, "demo-frame")
