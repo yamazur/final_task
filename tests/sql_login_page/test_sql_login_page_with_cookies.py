@@ -1,12 +1,7 @@
-import time
-
 import allure
 from allure_commons.types import Severity
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from config import SQL_LOGIN, SQL_PASSWORD, DEFAULT_TIMEOUT
 from pages.cookies_helper import save_cookies, load_cookies
-from pages.locators import Locators
 
 
 class TestSqlLoginPageWithCookies:

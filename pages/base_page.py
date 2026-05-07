@@ -51,7 +51,7 @@ class BasePage:
         except TimeoutException:
             return True
 
-    @allure.step("Ожидание появления элемента")
+    @allure.step("Ожидание появления алерта")
     def wait_for_alert(self, timeout=DEFAULT_TIMEOUT):
         return WebDriverWait(self.browser, timeout).until(
             EC.alert_is_present()
