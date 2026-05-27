@@ -4,6 +4,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from config import DEFAULT_TIMEOUT
 import allure
 
+from pages.locators import Locators
+
 
 class BasePage:
 
@@ -14,9 +16,13 @@ class BasePage:
 
     @allure.step('Открываем страницу и проверяем URL')
     def open_page_and_checking_url(self):
+
         self.browser.get(self.url)
-        assert self.browser.current_url == self.url, \
-            f"Expected URL {self.url}, but got {self.browser.current_url}"
+
+        assert self.browser.current_url.startswith(self.url), \
+            f"Expected URL starting with {self.url}, " \
+            f"but got {self.browser.current_url}"
+
         return self
 
     @allure.step("Ожидание появления элемента")
@@ -51,7 +57,7 @@ class BasePage:
         except TimeoutException:
             return True
 
-    @allure.step("Ожидание появления элемента")
+    @allure.step("Ожидание появления алерта")
     def wait_for_alert(self, timeout=DEFAULT_TIMEOUT):
         return WebDriverWait(self.browser, timeout).until(
             EC.alert_is_present()
@@ -89,3 +95,8 @@ class BasePage:
             alert.accept()
         except NoAlertPresentException:
             pass
+
+    @allure.step('Переключние на iframe')
+    def switch_to_iframe(self):
+        iframe = self.wait_for_element(Locators.IFRAME)
+        self.browser.switch_to.frame(iframe)

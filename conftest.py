@@ -1,4 +1,6 @@
 import pytest
+
+from pages.droppable_page import DroppablePage
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from config import DEFAULT_TIMEOUT
@@ -50,6 +52,12 @@ def open_login_page(browser):
 @pytest.fixture
 def open_sql_login_page(browser):
     page = SqlLoginPage(browser)
+    page.open_page_and_checking_url()
+    return page
+
+@pytest.fixture
+def open_droppable_page(browser):
+    page = DroppablePage(browser)
     page.open_page_and_checking_url()
     return page
 
