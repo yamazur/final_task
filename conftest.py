@@ -61,6 +61,8 @@ def open_droppable_page(browser):
     page.open_page_and_checking_url()
     return page
 
+
+
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item):
     outcome = yield
