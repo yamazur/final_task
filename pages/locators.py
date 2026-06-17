@@ -44,3 +44,5 @@ class Locators:
     DROPPABLE = (By.ID, "droppable")
 
     IFRAME = (By.CLASS_NAME, "demo-frame")
+
+    TABS_LINK = (By.CSS_SELECTOR, "a[target='_blank']")

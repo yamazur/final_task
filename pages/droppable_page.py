@@ -11,7 +11,8 @@ class DroppablePage(BasePage):
 
     def drag_n_drop_element_and_text_comparison(self):
 
-        self.switch_to_iframe()
+        iframe = self.wait_for_element(Locators.IFRAME)
+        self.browser.switch_to.frame(iframe)
 
         draggable = self.wait_for_element(Locators.DRAGGABLE)
         droppable = self.wait_for_element(Locators.DROPPABLE)

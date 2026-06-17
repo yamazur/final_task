@@ -96,7 +96,4 @@ class BasePage:
         except NoAlertPresentException:
             pass
 
-    @allure.step('Переключние на iframe')
-    def switch_to_iframe(self):
-        iframe = self.wait_for_element(Locators.IFRAME)
-        self.browser.switch_to.frame(iframe)
+
